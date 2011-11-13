@@ -7,10 +7,6 @@
 		<string>rd</string>
 		<string>Rd</string>
 	</array>
-	<key>foldingStartMarker</key>
-	<string>/\w*\{\s*$</string>
-	<key>foldingStopMarker</key>
-	<string>^\s*\}</string>
 	<key>keyEquivalent</key>
 	<string>^~R</string>
 	<key>name</key>
