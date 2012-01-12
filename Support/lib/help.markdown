@@ -237,8 +237,8 @@ In addition there is the bundle "R Console (R.app)" available. This bundle allow
 ***Date: Jan 12 2012***
 
 <pre>
--  Charilaos Skiadas&nbsp;<a href="mailto:cskiadas@gmail.com">cskiadas@gmail.com</a>
 -  Hans-Jörg Bibiko&nbsp;&nbsp;<a href="mailto:bibiko@eva.mpg.de">bibiko@eva.mpg.de</a>
+-  Charilaos Skiadas&nbsp;<a href="mailto:cskiadas@gmail.com">cskiadas@gmail.com</a>
 </pre>
 
 ## Credits
@@ -247,6 +247,8 @@ Many thanks to
 <pre>
 - John Purnell
 - Balthasar Bickel
+- Jon Claydon
+- Bernd Hasselman
 </pre>
 
 for all the valuable suggestions and the exhausting tests.

@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Symbol List: Method</string>
+	<string>Symbol List: Pragma</string>
 	<key>scope</key>
-	<string>entity.name.function entity.name.tag</string>
+	<string>comment.line.pragma-mark</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>
 		<integer>1</integer>
 		<key>symbolTransformation</key>
-		<string>s/\s*(.+?)\s*\(\s*("|\x27)(.*?)\s*\2/$1 "$3"/;</string>
+		<string>s/^.*?mark\s+\-+\s*/-/;s/^.*?mark\s+([^\-].+?)/# $1/;s/\s+$//;</string>
 	</dict>
 	<key>uuid</key>
-	<string>0AE8C5E0-C202-4965-B877-4CD0B9420A7D</string>
+	<string>E4D3F9E2-CE92-4142-B164-0CE1EB1AD453</string>
 </dict>
 </plist>
