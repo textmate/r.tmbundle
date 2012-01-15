@@ -192,6 +192,10 @@ Set the default function for “Wrap Selection → Function Call” ^⇧W. If un
 
 As default `Show R Help for actual Word` opens a single window without a search field if the actual word matches one keyword. To avoid this set that shell variable to “1”.
 
+## TM&#95;REXEC
+
+If not set a R session will be invoked by <code>R --vanilla --slave --encoding=UTF-8</code> otherwise, if set e.g. to "R32", a R session will be invoked by <code>R32 --vanilla --slave --encoding=UTF-8</code> in order to be able to start R explicitly in 64 ("R64") or 32 ("R32") bit mode. In addition it also allows to add more command line arguments like "R32 --verbose" will execute <code>R32 --verbose --vanilla --slave --encoding=UTF-8</code>.
+
 ## TM&#95;RMATE&#95;OUTPUT&#95;FONT
 
 Set the font of Rmate's output window. Default is set to “Monaco”.
@@ -234,7 +238,7 @@ In addition there is the bundle "R Console (R.app)" available. This bundle allow
 
 # Main Bundle Maintainer
 
-***Date: Jan 12 2012***
+***Date: Jan 15 2012***
 
 <pre>
 -  Hans-Jörg Bibiko&nbsp;&nbsp;<a href="mailto:bibiko@eva.mpg.de">bibiko@eva.mpg.de</a>
