@@ -15,7 +15,16 @@ $pipe_out = "/tmp/textmate_Rhelper_out"
 $pipe_status = "/tmp/textmate_Rhelper_status"
 $pipe_console = "/tmp/textmate_Rhelper_console"
 
-cmd = "R -q --vanilla --encoding=UTF-8 --TMRHelperDaemon 2&> '#{$pipe_console}'"
+# check for valid TM_REXEC; if not use "R"
+if ENV['TM_REXEC'] != nil
+	check = %x{which #{ENV['TM_REXEC']}}
+	if check == ""
+		%x{osascript -e 'tell app "TextMate" to display dialog "Please check TM_REXEC shell variable! “#{ENV['TM_REXEC']}” in PATH not found! Using “R” instead." buttons "OK" default button "OK"'}
+		ENV['TM_REXEC'] = nil
+	end
+end
+
+cmd = "#{(ENV['TM_REXEC']==nil) ? 'R' : ENV['TM_REXEC']} -q --vanilla --encoding=UTF-8 --TMRHelperDaemon 2&> '#{$pipe_console}'"
 
 FileUtils.rm_f($pipe_out)
 FileUtils.rm_f($pipe_status)
