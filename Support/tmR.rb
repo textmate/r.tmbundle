@@ -160,11 +160,7 @@ until descriptors.empty?
       print hideStartMessageJS
       print %{<span style="color: red">#{esc str}</span>}
     elsif io == stdout
-      # for some unknown reasons this could raise an exception
-      begin
-        print hideStartMessageJS
-      rescue
-      end
+      print hideStartMessageJS
       str.each_line do |line|
         # line counter for top level source
         if line.include?("#{linecountermarker}")
