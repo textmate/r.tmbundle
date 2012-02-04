@@ -138,7 +138,8 @@ Thread.new {
   stdin.close
 }
 
-STDOUT.sync = true
+STDOUT.sync = false
+STDERR.sync = false
 
 descriptors = [stdout, stderr]
 descriptors.each { |fd| fd.fcntl(Fcntl::F_SETFL, Fcntl::O_NONBLOCK) }
@@ -147,6 +148,9 @@ until descriptors.empty?
     begin
       str = io.readline
     rescue
+      descriptors.delete io
+      io.close
+      break
     end
     if str.nil? or str.empty?
       descriptors.delete io

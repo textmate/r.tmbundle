@@ -7,7 +7,10 @@
 	<key>bundleUUID</key>
 	<string>B29D7850-6E70-11D9-A369-000D93B3A10E</string>
 	<key>command</key>
-	<string>
+	<string>#!/usr/bin/env bash
+[[ -f "${TM_SUPPORT_PATH}/lib/bash_init.sh" ]] &amp;&amp; . "${TM_SUPPORT_PATH}/lib/bash_init.sh"
+
+
 
 if [ "${TM_SCOPE:0:17}" == "source.rd.console" ]; then
 	echo -n "read.spss(file=\"$TM_DROPPED_FILEPATH\", use.value.labels=\${1:TRUE}, to.data.frame=\${2:TRUE}, max.value.labels=\${3:Inf}, trim.factor.names=\${4:FALSE})"
@@ -17,8 +20,7 @@ else
 	else
 		echo "read.spss(file=\"$TM_DROPPED_FILE\", use.value.labels=\${1:TRUE}, to.data.frame=\${2:TRUE}, max.value.labels=\${3:Inf}, trim.factor.names=\${4:FALSE})"
 	fi
-fi
-exit_show_tool_tip</string>
+fi</string>
 	<key>draggedFileExtensions</key>
 	<array>
 		<string>sav</string>

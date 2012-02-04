@@ -5,13 +5,15 @@
 	<key>name</key>
 	<string>Symbol List: Method</string>
 	<key>scope</key>
-	<string>entity.name.function entity.name.tag</string>
+	<string>keyword.name.function, meta.method.declaration.r</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>
 		<integer>1</integer>
 		<key>symbolTransformation</key>
-		<string>s/\s*(.+?)\s*\(\s*("|\x27)(.*?)\s*\2/$1 "$3"/;</string>
+		<string>s/^.*?\(\s*([\w\d]+\s*=\s*)?(["\x{27}])(.*?)\2[^"\x{27}]+?(["\x{27}])(.*?)\4.*/- $3 ($5)/;
+	s/^\s*(\S+?)\s*\(\s*([\w\d]+\s*=\s*)?(["\x{27}])([^\3]+?)\3.*/- $1:$4/;
+	</string>
 	</dict>
 	<key>uuid</key>
 	<string>0AE8C5E0-C202-4965-B877-4CD0B9420A7D</string>

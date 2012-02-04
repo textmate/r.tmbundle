@@ -226,14 +226,14 @@
 					<key>name</key>
 					<string>entity.name.tag.r</string>
 				</dict>
-				<key>3</key>
+				<key>4</key>
 				<dict>
 					<key>name</key>
 					<string>entity.name.type.r</string>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(setMethod|setGeneric|setGroupGeneric|setClass)\s*\(\s*("|\x{27})([a-zA-Z._\[\$@][a-zA-Z0-9._\[]*?)\2</string>
+			<string>(setMethod|setReplaceMethod|setGeneric|setGroupGeneric|setClass)\s*\(\s*([[:alpha:]\d]+\s*=\s*)?("|\x{27})([a-zA-Z._\[\$@][a-zA-Z0-9._\[]*?)\3.*</string>
 			<key>name</key>
 			<string>meta.method.declaration.r</string>
 		</dict>
@@ -268,7 +268,7 @@
 			<key>match</key>
 			<string>\b([[:alnum:]_]+)(?=::)</string>
 			<key>name</key>
-			<string>entity.name.type.namespace.r</string>
+			<string>entity.namespace.r</string>
 		</dict>
 		<dict>
 			<key>match</key>
