@@ -136,7 +136,7 @@ It tidies the selection or the entire document by deparsing them on-the-fly usin
 
 ## Function Call
 <button>&nbsp;^&#x21E7;W&nbsp;</button>
-It inserts: &nbsp;&nbsp;&nbsp;<code><span style="background-color:lightblue;color:black">sum</span>(SELECTION/WORD)</code> as snippet.
+It inserts: &nbsp;&nbsp;&nbsp;<code><span style="background-color:lightblue;color:black">sum</span>(SELECTION/WORD)</code> as snippet. The default function can be set via the shell variable `TM_R_WRAP_DEFAULT_FUNCTION`.
 
 ## Function Definition
 <button>&nbsp;^&#x21E7;&#x2318;W&nbsp;</button>

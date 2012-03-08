@@ -5,7 +5,10 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>
+	<string>#!/usr/bin/env bash
+[[ -f "${TM_SUPPORT_PATH}/lib/bash_init.sh" ]] &amp;&amp; . "${TM_SUPPORT_PATH}/lib/bash_init.sh"
+
+
 if [ -z "$TM_SELECTED_TEXT" ]; then
 	WORD=$(ruby -- &lt;&lt;-SCR1 
 		require File.join(ENV["TM_SUPPORT_PATH"], "lib/current_word.rb")
@@ -28,15 +31,23 @@ fi
 	<string>word</string>
 	<key>input</key>
 	<string>selection</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
-	<string>^~@h</string>
+	<string>^~@H</string>
 	<key>name</key>
 	<string>RSeek Search for Word / Selection</string>
-	<key>output</key>
-	<string>showAsTooltip</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>toolTip</string>
 	<key>scope</key>
 	<string>source.r, source.rd.console</string>
 	<key>uuid</key>
 	<string>4DCF1FF7-D104-43C3-B0E3-8333A50CA5AA</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
