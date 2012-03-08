@@ -238,7 +238,7 @@ In addition there is the bundle "R Console (R.app)" available. This bundle allow
 
 # Main Bundle Maintainer
 
-***Date: Jan 15 2012***
+***Date: Mar 07 2012***
 
 <pre>
 -  Hans-Jörg Bibiko&nbsp;&nbsp;<a href="mailto:bibiko@eva.mpg.de">bibiko@eva.mpg.de</a>
@@ -252,7 +252,7 @@ Many thanks to
 - John Purnell
 - Balthasar Bickel
 - Jon Claydon
-- Bernd Hasselman
+- Berend Hasselman
 </pre>
 
 for all the valuable suggestions and the exhausting tests.

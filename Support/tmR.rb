@@ -1,10 +1,10 @@
 #!/usr/bin/ruby
 #
-# RMate v0.92, 2009-12-04.
+# RMate v0.95, 2012-03-07.
 # Copied, by Charilaos Skiadas, from RubyMate by Sune Foldager.
 # v0.1  (2005-08-12): Initial version.
 # v0.9  Heavily modified by Kevin Ballard
-# v0.92 Heavily modified by by Hans-Jörg Bibiko
+# v0.95 Heavily modified by by Hans-Jörg Bibiko
  
 require 'cgi'
 require 'fcntl'
@@ -138,12 +138,16 @@ Thread.new {
   stdin.close
 }
 
-STDOUT.sync = false
+STDOUT.sync = true
 STDERR.sync = false
 
 descriptors = [stdout, stderr]
-descriptors.each { |fd| fd.fcntl(Fcntl::F_SETFL, Fcntl::O_NONBLOCK) }
+descriptors.each do |fd|
+  fd.fcntl(Fcntl::F_SETFL, Fcntl::F_GETFL | Fcntl::O_NONBLOCK)
+end
+
 until descriptors.empty?
+  sleep 0.00001
   select(descriptors).shift.each do |io|
     begin
       str = io.readline
