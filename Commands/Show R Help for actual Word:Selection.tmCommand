@@ -96,7 +96,7 @@ if [ $RD -gt 0 -a "$TM_R_SHOW_ALWAYS_HELPSEARCH" != "1" ]; then
 		sleep 0.001
 		if [ ! -z "$FILE" -a "$FILE" != "NA" ]; then
 			if [ "${FILE:0:1}" = "/" ]; then
-				echo -en "&lt;meta http-equiv='REFRESH' content='0;url=tm-file://$FILE'&gt;&lt;/head&gt;"
+				echo -en "&lt;meta http-equiv='REFRESH' content='0;url=file://$FILE'&gt;&lt;/head&gt;"
 			else
 				echo -en "&lt;meta http-equiv='REFRESH' content='0;url=$FILE'&gt;&lt;/head&gt;"
 			fi
@@ -113,7 +113,7 @@ if [ "$TM_R_SHOW_ALWAYS_HELPSEARCH" != "1" ]; then
 	CNT=`echo -e "$FILE" | wc -l`
 	if [ ! -z "$FILE" -a "$FILE" != "NA" -a $CNT -eq 1 ]; then
 		if [ "${FILE:0:1}" = "/" ]; then
-			echo -en "&lt;meta http-equiv='REFRESH' content='0;url=tm-file://$FILE'&gt;&lt;/head&gt;"
+			echo -en "&lt;meta http-equiv='REFRESH' content='0;url=file://$FILE'&gt;&lt;/head&gt;"
 		else
 			echo -en "&lt;meta http-equiv='REFRESH' content='0;url=$FILE'&gt;&lt;/head&gt;"
 		fi
@@ -135,10 +135,10 @@ printframe() {
 	&lt;/HEAD&gt;
 	&lt;FRAMESET COLS="$ROWSIZE,*" FRAMEBORDER="5" FRAMESPACING="5" BORDER="7" FRAMEBORDER="YES" onload='parent.search.sform.search.value="$WORD";parent.search.sform.search.select();parent.search.sform.search.focus()'&gt;
 		&lt;FRAMESET ROWS="*,90" FRAMEBORDER="1" FRAMESPACING="0" BORDER="1" FRAMEBORDER="NO"&gt;
-			&lt;FRAME SRC="tm-file:///tmp/textmate_Rhelper_head.html" NAME="head" MARGINWIDTH="30" MARGINHEIGHT="0"  SCROLLING="YES"&gt;
-			&lt;FRAME SRC="tm-file:///tmp/textmate_Rhelper_search.html" NAME="search" MARGINWIDTH="30" MARGINHEIGHT="0"  SCROLLING="NO"&gt;
+			&lt;FRAME SRC="file:///tmp/textmate_Rhelper_head.html" NAME="head" MARGINWIDTH="30" MARGINHEIGHT="0"  SCROLLING="YES"&gt;
+			&lt;FRAME SRC="file:///tmp/textmate_Rhelper_search.html" NAME="search" MARGINWIDTH="30" MARGINHEIGHT="0"  SCROLLING="NO"&gt;
 		&lt;/FRAMESET&gt;
-		&lt;FRAME SRC="tm-file:///tmp/textmate_Rhelper_data.html" NAME="data" MARGINWIDTH="30" MARGINHEIGHT="0"  SCROLLING="YES"&gt;
+		&lt;FRAME SRC="file:///tmp/textmate_Rhelper_data.html" NAME="data" MARGINWIDTH="30" MARGINHEIGHT="0"  SCROLLING="YES"&gt;
 	&lt;/FRAMESET&gt;
 	&lt;/HTML&gt;
 HF
@@ -292,10 +292,10 @@ else
 			lib=$(echo -e "$i" | cut -d '	' -f1)
 			fun=$(echo -e "$i" | cut -d '	' -f2)
 			link=$(echo -e "$i" | cut -d '	' -f3)
-			echo "&lt;tr&gt;&lt;td&gt;$lib&lt;/td&gt;&lt;td&gt;&lt;a href='tm-file://$link' target='data'&gt;$fun&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;" &gt;&gt; "$HEAD"
+			echo "&lt;tr&gt;&lt;td&gt;$lib&lt;/td&gt;&lt;td&gt;&lt;a href='file://$link' target='data'&gt;$fun&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;" &gt;&gt; "$HEAD"
 		done
 		if [ $CNT -eq 1 ]; then
-			echo "&lt;base href=\"tm-file://$link\"&gt;" &gt; "$DATA"
+			echo "&lt;base href=\"file://$link\"&gt;" &gt; "$DATA"
 			cat "$link" | iconv -s -f ISO8859-1 -t UTF-8 &gt;&gt; "$DATA"
 		fi
 	fi

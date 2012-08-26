@@ -49,10 +49,10 @@ else
 			lib=$(echo -e "$i" | cut -d '	' -f1)
 			fun=$(echo -e "$i" | cut -d '	' -f2)
 			link=$(echo -e "$i" | cut -d '	' -f3)
-			echo "<tr><td>$lib</td><td><a href='tm-file://$link' target='data'>$fun</a></td></tr>" >> "$HEAD"
+			echo "<tr><td>$lib</td><td><a href='file://$link' target='data'>$fun</a></td></tr>" >> "$HEAD"
 		done
 		if [ $CNT -eq 1 ]; then
-			echo "<base href=\"tm-file://$link\">"
+			echo "<base href=\"file://$link\">"
 			cat "$link" | iconv -s -f ISO8859-1 -t UTF-8
 		fi
 	fi

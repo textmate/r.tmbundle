@@ -18,7 +18,7 @@ if [ $PORT -gt 0 ]; then
 
 else
 	RHOME=${R_HOME:=/Library/Frameworks/R.framework/Versions/Current/Resources}
-	echo "&lt;base href='tm-file://${RHOME// /%20}/doc/html/index.html'&gt;"
+	echo "&lt;base href='file://${RHOME// /%20}/doc/html/index.html'&gt;"
 	cat "${RHOME// /%20}"/doc/html/index.html
 
 fi</string>
