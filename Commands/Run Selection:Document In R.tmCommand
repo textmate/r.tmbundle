@@ -7,7 +7,10 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>
+	<string>#!/usr/bin/env bash
+[[ -f "${TM_SUPPORT_PATH}/lib/bash_init.sh" ]] &amp;&amp; . "${TM_SUPPORT_PATH}/lib/bash_init.sh"
+
+
 #only for Mac OSX 10.4 X11
 OS=$(uname -r | perl -pe 's/(\d+)\..*/$1/')
 [[ $OS -eq 8 ]] &amp;&amp; export DISPLAY=:0.0
@@ -33,15 +36,25 @@ fi
 	<string>document</string>
 	<key>input</key>
 	<string>document</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
 	<string>@r</string>
 	<key>name</key>
 	<string>Run Document / Selection in R</string>
-	<key>output</key>
-	<string>showAsHTML</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
 	<key>scope</key>
 	<string>source.r</string>
+	<key>semanticClass</key>
+	<string>process.run.script.r</string>
 	<key>uuid</key>
 	<string>F5D7F00C-6DEE-469E-AFEE-6E4B7CDD4148</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>

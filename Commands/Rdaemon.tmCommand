@@ -7,7 +7,10 @@
 	<key>bundleUUID</key>
 	<string>B5A22967-2E6A-4B66-9C71-DA8762C01E27</string>
 	<key>command</key>
-	<string>######### global variables #########
+	<string>#!/usr/bin/env bash
+[[ -f "${TM_SUPPORT_PATH}/lib/bash_init.sh" ]] &amp;&amp; . "${TM_SUPPORT_PATH}/lib/bash_init.sh"
+
+######### global variables #########
 
 RDHOME="$HOME/Library/Application Support/Rdaemon"
 if [ "$TM_RdaemonRAMDRIVE" == "1" ]; then
@@ -164,15 +167,25 @@ fi
 	<string>document</string>
 	<key>input</key>
 	<string>selection</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
 	<string>@R</string>
 	<key>name</key>
 	<string>Rdaemon</string>
-	<key>output</key>
-	<string>showAsTooltip</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>toolTip</string>
 	<key>scope</key>
 	<string>source.r</string>
+	<key>semanticClass</key>
+	<string>process.external.run.r</string>
 	<key>uuid</key>
 	<string>DC1EC8A4-BC20-4D1C-91B6-328CEC2CA228</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
