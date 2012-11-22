@@ -35,7 +35,7 @@ fi
 	<key>fallbackInput</key>
 	<string>document</string>
 	<key>input</key>
-	<string>document</string>
+	<string>selection</string>
 	<key>inputFormat</key>
 	<string>text</string>
 	<key>keyEquivalent</key>
