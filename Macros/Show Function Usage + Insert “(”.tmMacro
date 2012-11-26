@@ -32,8 +32,6 @@
 			<string>insertText:</string>
 		</dict>
 	</array>
-	<key>keyEquivalent</key>
-	<string>(</string>
 	<key>name</key>
 	<string>Show Function Usage + Insert “(”</string>
 	<key>scope</key>
