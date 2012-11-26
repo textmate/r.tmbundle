@@ -74,7 +74,7 @@ def recursive_delete(path)
 end
 
 # allow the user to define its own output font and size
-outputFont = (ENV['TM_RMATE_OUTPUT_FONT'] == nil) ? "Monaco" : ENV['TM_RMATE_OUTPUT_FONT']
+outputFont = (ENV['TM_RMATE_OUTPUT_FONT'] == nil) ? "Menlo" : ENV['TM_RMATE_OUTPUT_FONT']
 outputFontSize = (ENV['TM_RMATE_OUTPUT_FONTSIZE'] == nil) ? "10pt" : "#{ENV['TM_RMATE_OUTPUT_FONTSIZE']}pt"
 
 # what comes in
@@ -90,8 +90,8 @@ EOS
 # Prepare some values for later.
 myFile = __FILE__
 myDir = File.dirname(myFile) + '/'
-# include pastel.css and substitute some placeholder
-File.open(File.join(myDir, 'pastel.css')) {|f| f.each_line {|l| print l.gsub('FONTPLACEHOLDER',outputFont).gsub('FONTSIZEPLACEHOLDER',outputFontSize)} }
+# include RMate.css and substitute some placeholder
+File.open(File.join(myDir, 'RMate.css')) {|f| f.each_line {|l| print l.gsub('FONTPLACEHOLDER',outputFont).gsub('FONTSIZEPLACEHOLDER',outputFontSize)} }
 print <<-HTML
 </style>
 <script type="text/javascript">
@@ -162,7 +162,7 @@ until descriptors.empty?
     elsif io == stderr
       # just in case
       print hideStartMessageJS
-      print %{<span style="color: red">#{esc str}</span>}
+      print %{<span>#{esc str}</span>}
     elsif io == stdout
       print hideStartMessageJS
       str.each_line do |line|
@@ -172,21 +172,24 @@ until descriptors.empty?
           line.sub!("#{linecountermarker}", '')
         end
         # check for a comment sign at the beginning of a line
-        if line.match(/>\s*#/)
-          print "<i><font color=blue>#{esc line.chomp}</font></i>\n"
+        if m=line.match(/(>|\+)(\s*#.*$)/)
+          print "<span class='comment'><a class='prompt'>#{esc(m[1])}</a>#{esc(m[2]).chomp}</span><br />"
         # check for a comment within a line - regexp should be improved yet!
         elsif m=line.match(/(.*?)(#[^"']*)$/)
           print esc(m[1]).gsub(/^(&gt;|\+)/,'<a class="prompt" href="txmt://open?line='+linecounter.to_s+'">\1</a>')
-          print "<i><font color=blue>#{esc(m[2]).chomp}</font></i>\n"
+          print "<span class ='comment'>#{esc(m[2]).chomp}</span><br />"
         # check for error messages
         elsif m=line.match(/(?i)^\s*(error|erreur|fehler|errore|erro)( |:)/)
           where = (isSelection) ? " of selection" : ""
-          print "<span style='color: red'>#{esc str.gsub(%r{(?m).*?#{m[1]}},m[1]).chomp}<br /><i>RMate</i> stopped at <a href='txmt://open?line=#{linecounter}'>line #{linecounter-selectionlinestart}#{where}</a></span><br />".gsub(%r{source\(&quot;(.*?)&quot;\)},'source(&quot;<a href="txmt://open?url=file://\1">\1</a>&quot;)')
-          print "<hr noshade width='300' size='2' align='left' color=lightgrey>"
+          print "<span class='error'>#{esc str.gsub(%r{(?m).*?#{m[1]}},m[1]).chomp}<br />RMate stopped at <a href='txmt://open?line=#{linecounter}'>line #{linecounter-selectionlinestart}#{where}</a></span><br />".gsub(%r{source\(&quot;(.*?)&quot;\)},'source(&quot;<a href="txmt://open?url=file://\1">\1</a>&quot;)')
+          print "<hr>"
           break
         # check for warnings
         elsif line.match(/^\s*(Warning|Warning messages?|Message d.avis|Warnmeldung|Messaggio di avvertimento|Mensagem de aviso):/)
-          print "<span style='color: gray'>#{esc line}</span>"
+          print "<span class='warning'>#{esc line}</span>"
+        # regular console output
+        elsif line.match(/^[^>+].*$/)
+          print "<span class='output'>#{esc line}</span>"
         # print line simply with hyperlinked prompt if given
         elsif line.match(/_\x8./)
           print "#{line.gsub(/_\x8(.)/,'<b>\1</b>')}"
@@ -203,15 +206,17 @@ STDOUT.flush
 # check for generated plots; if yes, embed them into the HTML output as PDF images
 if !Dir::glob("#{tmpDir}/*.pdf").empty?
   width = (Dir::glob("#{tmpDir}/*.pdf").size > 1) ? "50%" : "100%"
-  puts "<br /><strong><i style='font-size:8pt'>Click at image to open it.</i></strong><hr noshade size='2' align='left' color=lightgrey>"
+  puts "<br /><strong>Click at image to open it.</strong><hr>"
   counter = 0
   Dir::glob("#{tmpDir}/*.pdf") { |f| 
     counter +=  1
     rndn = Time.now.to_i # random number needed to enforce reloading of cached images
+    print "<div class='img'>"
     print "<img width=#{width} onclick=\"TextMate.system(\'open \\'#{f}\\'\',null);\" src='file://#{f}?#{rndn}' />"
+    print "</div>"
     print "<br>" if (counter % 2 == 0)
   }
-  puts "<hr noshade size='2' align='left' color=lightgrey><center><input type=button onclick=\"TextMate.system(\'open -a Preview \\'#{tmpDir}\\'\',null);\" value='Open all Images in Preview' />&nbsp;&nbsp;&nbsp;<input type=button onclick=\"TextMate.system(\'open -a Finder \\'#{tmpDir}\\'\',null);\" value='Reveal all Images in Finder' /></center>"
+  puts "<hr><center><input type=button onclick=\"TextMate.system(\'open -a Preview \\'#{tmpDir}\\'\',null);\" value='Open all Images in Preview' />&nbsp;&nbsp;&nbsp;<input type=button onclick=\"TextMate.system(\'open -a Finder \\'#{tmpDir}\\'\',null);\" value='Reveal all Images in Finder' /></center>"
 end
 
 puts '</div></pre></div>'
