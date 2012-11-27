@@ -40,6 +40,11 @@ div#script_output
 	background-color: rgb(39, 41, 44);
 }
 
+div.img
+{
+  background-color: rgb(255, 255, 255);
+}
+
 span.output
 {
 	color: rgb(162, 181, 112);

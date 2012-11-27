@@ -74,7 +74,7 @@ def recursive_delete(path)
 end
 
 # allow the user to define its own output font and size
-outputFont = (ENV['TM_RMATE_OUTPUT_FONT'] == nil) ? "Monaco" : ENV['TM_RMATE_OUTPUT_FONT']
+outputFont = (ENV['TM_RMATE_OUTPUT_FONT'] == nil) ? "Menlo" : ENV['TM_RMATE_OUTPUT_FONT']
 outputFontSize = (ENV['TM_RMATE_OUTPUT_FONTSIZE'] == nil) ? "10pt" : "#{ENV['TM_RMATE_OUTPUT_FONTSIZE']}pt"
 
 # what comes in
@@ -206,12 +206,14 @@ STDOUT.flush
 # check for generated plots; if yes, embed them into the HTML output as PDF images
 if !Dir::glob("#{tmpDir}/*.pdf").empty?
   width = (Dir::glob("#{tmpDir}/*.pdf").size > 1) ? "50%" : "100%"
-  puts "<br /><strong><i>Click at image to open it.</i></strong><hr>"
+  puts "<br /><strong>Click at image to open it.</strong><hr>"
   counter = 0
   Dir::glob("#{tmpDir}/*.pdf") { |f| 
     counter +=  1
     rndn = Time.now.to_i # random number needed to enforce reloading of cached images
+    print "<div class='img'>"
     print "<img width=#{width} onclick=\"TextMate.system(\'open \\'#{f}\\'\',null);\" src='file://#{f}?#{rndn}' />"
+    print "</div>"
     print "<br>" if (counter % 2 == 0)
   }
   puts "<hr><center><input type=button onclick=\"TextMate.system(\'open -a Preview \\'#{tmpDir}\\'\',null);\" value='Open all Images in Preview' />&nbsp;&nbsp;&nbsp;<input type=button onclick=\"TextMate.system(\'open -a Finder \\'#{tmpDir}\\'\',null);\" value='Reveal all Images in Finder' /></center>"
