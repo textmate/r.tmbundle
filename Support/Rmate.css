@@ -1,15 +1,6 @@
-∫/*
-
-Blatantly copied from Ruby. Will need to find some uniform system.
-Charilaos Skiadas. 05-03-2006
-
-Stylesheet kindly borrowed from the PyMate command. Eventually I will coordinate something
-with the author, so we don't have several identical files around.
-By Sune Foldager.
-Version 1, 12-08-2005.
-
+/*
+ Style sheet rewritten by Felix Jung on 11/27/2012.
 */
-
 body
 {
 	font-family: FONTPLACEHOLDER;
