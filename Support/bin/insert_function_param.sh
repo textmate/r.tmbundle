@@ -99,7 +99,7 @@ if [ -z "$RES" ]; then
 fi
 
 #show all parameters as inline menu and insert the parameter as snippet (if '=' is found only the value)
-ruby -- <<-SCRIPT
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -- <<-SCRIPT
 # 2> /dev/null
 require File.join(ENV["TM_SUPPORT_PATH"], "lib/exit_codes.rb")
 require "#{ENV["TM_SUPPORT_PATH"]}/lib/ui"

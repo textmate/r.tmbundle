@@ -21,7 +21,7 @@ else
 	fi
 fi
 
-ruby Rhelperbuilder.rb &> /dev/null &
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby Rhelperbuilder.rb &> /dev/null &
 
 ### wait for Rhelper
 #safety counter

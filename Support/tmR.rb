@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
 #
 # RMate v0.95, 2012-03-07.
 # Copied, by Charilaos Skiadas, from RubyMate by Sune Foldager.
