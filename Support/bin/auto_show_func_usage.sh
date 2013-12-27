@@ -1,5 +1,5 @@
 
-export WORD=$(ruby -- <<-SCR1
+export WORD=$(/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -- <<-SCR1
 print ENV['TM_CURRENT_LINE'][0...ENV['TM_LINE_INDEX'].to_i].gsub!(/ *$/, "").match(/[\w.:]*$/).to_s
 SCR1
 )
