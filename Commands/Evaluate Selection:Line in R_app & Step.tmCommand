@@ -5,7 +5,9 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string># input is selection or document
+	<string>#!/usr/bin/env bash
+
+# input is selection or document
 rawText="`cat`"
 
 curDir=''
@@ -20,16 +22,17 @@ osascript -e 'on run(theCode)' \
 		  -e 'end run' -- "$rawText" "$curDir"
 
 if [ "$TM_LINE_NUMBER" != "" ]; then
-	open "txmt://open?line=$(($TM_LINE_NUMBER+1))&amp;column=1000000" &amp;
+    "$TM_MATE" -l "$(($TM_LINE_NUMBER+1)):1000000"
 elif [[ $TM_SELECTION =~ [1-9][0-9]*:?[0-9]*-([1-9][0-9]*):?[0-9]* ]]; then
-	 # Regular Selection
-	open "txmt://open?line=$((${BASH_REMATCH[1]}+1))&amp;column=1000000" &amp;
+    # Regular Selection
+    "$TM_MATE" -l "$((${BASH_REMATCH[1]}+1)):1000000"
 elif [[ $TM_SELECTION =~ [1-9][0-9]*:?[0-9]*x([1-9][0-9]*):?[0-9]* ]]; then 
-	# Block (option) selection
-	open "txmt://open?line=$((${BASH_REMATCH[1]}+1))&amp;column=1000000" &amp;
+    # Block (option) selection
+    "$TM_MATE" -l "$((${BASH_REMATCH[1]}+1)):1000000"
 else 
-	open "txmt://open"
-fi</string>
+    "$TM_MATE"
+fi
+</string>
 	<key>fallbackInput</key>
 	<string>line</string>
 	<key>input</key>
