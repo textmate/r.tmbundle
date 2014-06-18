@@ -16,7 +16,7 @@ fi
 [[ -z "$RES" ]] &amp;&amp; exit_discard
 
 #show all parameters as inline menu and insert the parameter as snippet (if '=' is found only the value)
-/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -- &lt;&lt;-SCRIPT
+ruby18 -- &lt;&lt;-SCRIPT
 # 2&gt; /dev/null
 require File.join(ENV["TM_SUPPORT_PATH"], "lib/exit_codes.rb")
 require "#{ENV["TM_SUPPORT_PATH"]}/lib/ui"

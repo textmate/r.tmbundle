@@ -13,7 +13,7 @@ LINE=$(cat | perl -e '
 	$lineR=~s/^([\w_\.]*)/$1\${0:}/;
 	print "$lineL\n$lineR";
 ')
-WORD=$(/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -- <<-SCR1 
+WORD=$(ruby18 -- <<-SCR1 
 	require File.join(ENV["TM_SUPPORT_PATH"], "lib/current_word.rb")
 	word = Word.current_word('\w._')
 	print word
@@ -32,7 +32,7 @@ if [ -z "$LIB" ]; then
 fi
 
 if [ `echo "$LIB" | wc -l` -gt 1 ]; then
-	LIB=$(echo "$LIB" | sort -f | /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -e '
+	LIB=$(echo "$LIB" | sort -f | ruby18 -e '
 		require File.join(ENV["TM_SUPPORT_PATH"], "lib/ui.rb")
 		require File.join(ENV["TM_SUPPORT_PATH"], "lib/exit_codes.rb")
 		words = STDIN.read().split("\n")

@@ -1,4 +1,4 @@
-#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
+#!/usr/bin/env ruby18
 require 'pp'
 Dir.chdir(File.join((ENV["R_HOME"] || "/Library/Frameworks/R.framework/Resources"), "library"))
 resources = Dir.glob("*/latex/*.tex")

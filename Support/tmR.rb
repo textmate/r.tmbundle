@@ -1,4 +1,4 @@
-#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
+#!/usr/bin/env ruby18
 #
 # RMate v0.95, 2012-03-07.
 # Copied, by Charilaos Skiadas, from RubyMate by Sune Foldager.

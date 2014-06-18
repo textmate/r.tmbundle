@@ -1,4 +1,4 @@
-#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
+#!/usr/bin/env ruby18
 require File.join(ENV['TM_SUPPORT_PATH'], "lib/exit_codes.rb")
 require File.join(ENV['TM_SUPPORT_PATH'], "lib/ui.rb")
 require File.join(ENV['TM_SUPPORT_PATH'], 'lib/current_word.rb')

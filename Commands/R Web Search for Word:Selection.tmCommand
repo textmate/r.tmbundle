@@ -10,7 +10,7 @@
 
 
 if [ -z "$TM_SELECTED_TEXT" ]; then
-	WORD=$(/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -- &lt;&lt;-SCR1 
+	WORD=$(ruby18 -- &lt;&lt;-SCR1 
 		require File.join(ENV["TM_SUPPORT_PATH"], "lib/current_word.rb")
 		word = Word.current_word('\w\.')
 		word.gsub!(/^[\d\.\-]+$/,"")

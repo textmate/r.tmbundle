@@ -7,7 +7,7 @@
 	<key>command</key>
 	<string>LIST=$(cat)
 [[ -z "$LIST" ]] &amp;&amp; exit_discard
-echo -en "$LIST"  | /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -e '
+echo -en "$LIST"  | ruby18 -e '
 	require File.join(ENV["TM_SUPPORT_PATH"], "lib/ui.rb")
 	require File.join(ENV["TM_SUPPORT_PATH"], "lib/exit_codes.rb")
 	words = STDIN.read().split("|")
