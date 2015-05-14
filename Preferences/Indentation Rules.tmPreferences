@@ -8,8 +8,12 @@
 	<string>source.r</string>
 	<key>settings</key>
 	<dict>
+		<key>decreaseIndentPattern</key>
+		<string>^\s*\}</string>
 		<key>indentNextLinePattern</key>
 		<string>^\s*(repeat|else|(((else\s+)?if|for|while)\s*\(.+\)))</string>
+		<key>unIndentedLinePattern</key>
+		<string>^\s*$</string>
 	</dict>
 	<key>uuid</key>
 	<string>8A8DFE5C-EA28-46EB-BD5C-C2B08CAA7352</string>
