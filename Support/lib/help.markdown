@@ -8,7 +8,7 @@ R provides a wide variety of statistical (linear and non-linear modeling, classi
 
 More information about R can be found at [r-project.org](http://www.r-project.org/).
 
-<big><font color=blue> ⇢ This bundle requires a R version greater R 2.8.</font></big>
+<big><font color=blue> ⇢ This bundle requires a R version >= R 3.2</font></big>
 
 # Commands
 
@@ -238,7 +238,7 @@ In addition there is the bundle "R Console (R.app)" available. This bundle allow
 
 # Main Bundle Maintainer
 
-***Date: Mar 07 2012***
+***Date: May 14 2015***
 
 <pre>
 -  Hans-Jörg Bibiko&nbsp;&nbsp;<a href="mailto:bibiko@eva.mpg.de">bibiko@eva.mpg.de</a>
