@@ -35,7 +35,7 @@ TM_RdaemongetSearchHelp <- function(x,ic=T) {
 }
 TM_RdaemongetInstalledPackages <- function() cat(installed.packages()[,1],sep='\n')
 TM_RdaemongetLoadedPackages <- function() cat(sort(.packages()),sep='\n')
-TM_RdaemongetPackageFor <- function(x) cat(help.search(paste("^",x,"$",sep=""),ignore.case=F)[[4]][,3],sep='\n')
+TM_RdaemongetPackageFor <- function(x) cat(help.search(paste("^","ogrInfo","$",sep=""),ignore.case=F)$matches$Package,sep='\n')
 TM_RdaemongetCompletionList <- function(x,ic=F) {
 	invisible(help.search("^§!#%$"));db<-utils:::.hsearch_db()
 	a<-db$Alias[grep(paste("^",x,sep=""),db$Alias[,1],ignore.case=ic,perl=T),c(1,3)]
