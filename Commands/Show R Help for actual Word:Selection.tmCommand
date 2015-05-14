@@ -5,7 +5,10 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>#dispose all frozen ProgressDialogs
+	<string>#!/bin/bash
+[[ -f "${TM_SUPPORT_PATH}/lib/bash_init.sh" ]] &amp;&amp; . "${TM_SUPPORT_PATH}/lib/bash_init.sh"
+
+#dispose all frozen ProgressDialogs
 {
 while [ 1 ]
 do
@@ -79,7 +82,7 @@ if [ $RD -gt 0 -a "$TM_R_SHOW_ALWAYS_HELPSEARCH" != "1" ]; then
 		[[ -e "$RDRAMDISK"/r_tmp ]] &amp;&amp; rm "$RDRAMDISK"/r_tmp
 		TASK="@|sink('$RDRAMDISK/r_tmp')"
 		echo "$TASK" &gt; "$RDHOME"/r_in
-		echo "@|if(getRversion()&gt;='2.10.0'){cat(gsub('.*/library/(.*?)/.*?/(.*?)(\\\\.html|$)',paste('http://127.0.0.1:',ifelse(tools:::httpdPort&lt;1,tools::startDynamicHelp(T),tools:::httpdPort),'/library/\\\\1/html/\\\\2.html',sep=''),as.vector(help('$WORD'$LIB)),perl=T),sep='\n')}else{cat(gsub('(.*?)/library/(.*?)/.*?/(.*?)(\\\\.html|$)','\\\\1/library/\\\\2/html/\\\\3.html',as.vector(help('$WORD'$LIB)),perl=T),sep='\n')}" &gt; "$RDHOME"/r_in
+		echo "@|if(getRversion()&gt;='2.10.0'){cat(gsub('.*/library/(.*?)/.*?/(.*?)(\\\\.html|$)',paste('http://127.0.0.1:',ifelse(tools:::httpdPort()&lt;1,tools::startDynamicHelp(T),tools:::httpdPort()),'/library/\\\\1/html/\\\\2.html',sep=''),as.vector(help('$WORD'$LIB)),perl=T),sep='\n')}else{cat(gsub('(.*?)/library/(.*?)/.*?/(.*?)(\\\\.html|$)','\\\\1/library/\\\\2/html/\\\\3.html',as.vector(help('$WORD'$LIB)),perl=T),sep='\n')}" &gt; "$RDHOME"/r_in
 		sleep 0.001
 		while [ 1 ]
 		do
@@ -312,15 +315,23 @@ exit_show_html
 	<string>none</string>
 	<key>input</key>
 	<string>selection</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
 	<string>^h</string>
 	<key>name</key>
 	<string>Show R Help for actual Word / Selection</string>
-	<key>output</key>
-	<string>showAsTooltip</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>toolTip</string>
 	<key>scope</key>
 	<string>source.r, source.rd.console</string>
 	<key>uuid</key>
 	<string>3F849C03-8BFC-4A54-B985-09BB453AF679</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
