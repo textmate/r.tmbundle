@@ -24,7 +24,7 @@ else
 	"$TM_BUNDLE_SUPPORT"/bin/askRhelperDaemon.sh "@getSearchHelp('$TERM')"
 	AS=""
 fi
-sleep 0.05
+sleep 0.09
 
 CNT=`cat "$RhelperAnswer" | wc -l`
 if [ $CNT -gt 500 ]; then
@@ -34,9 +34,9 @@ else
 	if [ "$IS_HELPSERVER" == "TRUE" ]; then
 		while read i
 		do
-			lib=$(echo -e "$i" | cut -d '	' -f1)
-			fun=$(echo -e "$i" | cut -d '	' -f2)
-			link=$(echo -e "$i" | cut -d '	' -f3)
+			lib=$(echo "$i" | cut -d '	' -f1)
+			fun=$(echo "$i" | cut -d '	' -f2)
+			link=$(echo "$i" | cut -d '	' -f3)
 			echo "<tr><td>$lib</td><td><a href='$link' target='data'>$fun</a></td></tr>" >> "$HEAD"
 		done
 		if [ $CNT -eq 1 ]; then

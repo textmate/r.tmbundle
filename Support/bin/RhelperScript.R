@@ -10,16 +10,16 @@ TM_RdaemongetHelpURL <- function(x,...) {
 
 TM_RdaemongetHttpPort <- function() cat(ifelse(getRversion()>='2.10.0',ifelse(tools:::httpdPort()<1,tools::startDynamicHelp(T),tools:::httpdPort()),-2))
 TM_RdaemongetSearchHelp <- function(x,ic=T) {
-	if (getRversion()>='2.10.0') {
+	if (getRversion()>='3.2.0') {
 		p<-ifelse(tools:::httpdPort()<1,tools::startDynamicHelp(T),tools:::httpdPort())
-		a<-help.search(x,ignore.case=ic)[[4]][,c(3,1)]
+		a<-help.search(x,ignore.case=ic)$matches[,c("Package", "Name", "LibPath")]
 		if(length(a)>0){
 			if(is.null(dim(a))) {a<-matrix(a,ncol=2)}
 			cat(sort(apply(a,1,function(x) {
 				h<-gsub(".*/library/(.*?)/.*?/(.*?)(\\.html|$)",paste("http://127.0.0.1:",p,"/library/\\1/html/\\2.html",sep=""),help(x[2],package=x[1])[1],perl=T)
 				paste(c(x[1],x[2],h),collapse='\t')})),sep='\n')
 		} else {
-			cat("NA",sep='')
+			# cat("NA",sep='')
 		}
 	} else {
 		a<-help.search(x,ignore.case=ic)[[4]][,c(3,1)]
