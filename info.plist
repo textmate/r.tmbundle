@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>contactEmailRot13</key>
-	<string>ovovxb@rin.zct.qr</string>
+	<string>znvy@ovovxb.qr</string>
 	<key>contactName</key>
 	<string>Hans-Jörg Bibiko</string>
 	<key>deleted</key>
@@ -27,7 +27,7 @@
 		<string>65475CEE-F527-4A32-B3B5-387C73186F8E</string>
 	</array>
 	<key>description</key>
-	<string>&lt;a href="http://www.r-project.org/"&gt;R&lt;/a&gt; is a free software environment for statistical computing and graphics. This bundle includes a command that sends current line to the R.app environment or to the Rdaemon.</string>
+	<string>&lt;a href="https://www.r-project.org/"&gt;R&lt;/a&gt; is a free software environment for statistical computing and graphics. This bundle includes a command that sends current line to the R.app environment or to the Rdaemon.</string>
 	<key>mainMenu</key>
 	<dict>
 		<key>excludedItems</key>
