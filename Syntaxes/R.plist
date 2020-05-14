@@ -214,7 +214,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>([[:alpha:].][[:alnum:]._]*)\s*(&lt;-)\s*(function)</string>
+			<string>((?:`[^`\\]*(?:\\.[^`\\]*)*`)|(?:[[:alpha:].][[:alnum:]._]*))\s*(&lt;?&lt;-|=(?!=))\s*(function)</string>
 			<key>name</key>
 			<string>meta.function.r</string>
 		</dict>
@@ -239,7 +239,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>([[:alpha:].][[:alnum:]._]*)\s*\(</string>
+			<string>((?:`[^`\\]*(?:\\.[^`\\]*)*`)|(?:[[:alpha:].][[:alnum:]._]*))\s*\(</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -256,7 +256,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>([[:alpha:].][[:alnum:]._]*)\s*(=)(?=[^=])</string>
+			<string>([[:alpha:].][[:alnum:]._]*)\s*(=(?!=))</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -272,7 +272,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b([[:alnum:]._]+)\b</string>
+			<string>((?:`[^`\\]*(?:\\.[^`\\]*)*`)|(?:[[:alpha:].][[:alnum:]._]*))</string>
 			<key>name</key>
 			<string>variable.other.r</string>
 		</dict>
