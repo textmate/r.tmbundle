@@ -106,7 +106,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(=|&lt;-|&lt;&lt;-|-&gt;|-&gt;&gt;)</string>
+			<string>(=|&lt;-|&lt;&lt;-|-&gt;|-&gt;&gt;|%&gt;%|\|&gt;)</string>
 			<key>name</key>
 			<string>keyword.operator.assignment.r</string>
 		</dict>
