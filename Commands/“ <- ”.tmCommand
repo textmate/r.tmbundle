@@ -14,7 +14,7 @@ fi</string>
 	<key>input</key>
 	<string>none</string>
 	<key>keyEquivalent</key>
-	<string>^-</string>
+	<string>^=</string>
 	<key>name</key>
 	<string>“ &lt;- ”</string>
 	<key>output</key>
